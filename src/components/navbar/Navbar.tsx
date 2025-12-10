@@ -1,31 +1,34 @@
+"use client";
+
 import React from "react";
-import {
-  Navbar as HeroNavbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-} from "@heroui/navbar";
-import Link from "next/link";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 
-/**
- * Minimal, responsive Navbar using Hero UI components.
- * Sections: Home, About, Projects, Courses, Contact
- */
-export default function Navbar() {
+export const AcmeLogo = () => {
   return (
-    <HeroNavbar isBordered>
-      <NavbarBrand>
-        <Link href="/" className="text-lg font-semibold">
-          Ángel Quintero
-        </Link>
-      </NavbarBrand>
+    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
+      <path
+        clipRule="evenodd"
+        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+    </svg>
+  );
+};
 
-      <NavbarContent justify="end">
+// Default export named App to match the snippet you provided. Layout imports default export so this works.
+export default function App() {
+  return (
+    <Navbar>
+      <NavbarBrand>
+        <AcmeLogo />
+        <p className="font-bold text-inherit">Ángel Quintero</p>
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link href="/">Home</Link>
+          <Link color="foreground" href="/">
+            Home
+          </Link>
         </NavbarItem>
         <NavbarItem>
           <Link href="/about">About</Link>
@@ -40,26 +43,16 @@ export default function Navbar() {
           <Link href="/contact">Contact</Link>
         </NavbarItem>
       </NavbarContent>
-
-      {/* Mobile menu toggle / menu */}
-      <NavbarMenuToggle />
-      <NavbarMenu>
-        <NavbarMenuItem>
-          <Link href="/">Home</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/about">About</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/projects">Projects</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/courses">Courses</Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/contact">Contact</Link>
-        </NavbarMenuItem>
-      </NavbarMenu>
-    </HeroNavbar>
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="/login">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} color="primary" href="/contact" variant="flat">
+            Contact
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
   );
 }
