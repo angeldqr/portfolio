@@ -1,6 +1,5 @@
-"use client";
+﻿"use client";
 
-import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 
 export const AcmeLogo = () => {
@@ -16,40 +15,42 @@ export const AcmeLogo = () => {
   );
 };
 
-// Default export named App to match the snippet you provided. Layout imports default export so this works.
-export default function App() {
+export default function NavbarComponent() {
   return (
-    <Navbar>
-      <NavbarBrand>
+    <Navbar className="px-6">
+      <NavbarBrand className="gap-3">
         <AcmeLogo />
         <p className="font-bold text-inherit">Ángel Quintero</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-10" justify="center">
         <NavbarItem>
           <Link color="foreground" href="/">
-            Home
+            Inicio
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/about">About</Link>
+          <Link color="foreground" href="/about">
+            Sobre mí
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive>
+          <Link aria-current="page" color="primary" href="/projects">
+            Proyectos
+          </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/projects">Projects</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/courses">Courses</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/contact">Contact</Link>
+          <Link color="foreground" href="/courses">
+            Cursos
+          </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className="gap-6">
         <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
+          <Link href="/contact">Contacto</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="/contact" variant="flat">
-            Contact
+          <Button as={Link} color="primary" href="/contact" variant="flat" className="px-5">
+            Contáctame
           </Button>
         </NavbarItem>
       </NavbarContent>
