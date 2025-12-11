@@ -20,12 +20,18 @@ export default function NavbarComponent() {
   const pathname = usePathname();
 
   return (
-    <Navbar isBordered className="px-6">
-      <NavbarBrand className="gap-3">
-        <AcmeLogo />
-        <p className="font-bold text-inherit">Ángel Quintero</p>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-10" justify="center">
+    <Navbar 
+      isBordered 
+      maxWidth="full"
+      classNames={{
+        wrapper: "w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16"
+      }}
+    >
+        <NavbarBrand className="gap-3">
+          <AcmeLogo />
+          <p className="font-bold text-inherit">Ángel Quintero</p>
+        </NavbarBrand>
+        <NavbarContent className="hidden sm:flex gap-10" justify="center">
         <NavbarItem isActive={pathname === "/"}>
           <Link color={pathname === "/" ? "foreground" : "foreground"} href="/" className={pathname === "/" ? "" : "opacity-60"}>
             Inicio
