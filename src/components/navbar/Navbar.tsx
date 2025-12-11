@@ -20,8 +20,8 @@ export default function NavbarComponent() {
   const pathname = usePathname();
 
   return (
-    <Navbar 
-      isBordered 
+    <Navbar
+      isBordered
       maxWidth="full"
       classNames={{
         wrapper: "w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16"
