@@ -1,6 +1,7 @@
 ﻿"use client";
 
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link } from "@heroui/react";
+import { usePathname } from "next/navigation";
 
 export const AcmeLogo = () => {
   return (
@@ -16,42 +17,41 @@ export const AcmeLogo = () => {
 };
 
 export default function NavbarComponent() {
+  const pathname = usePathname();
+
   return (
-    <Navbar className="px-6">
+    <Navbar isBordered className="px-6">
       <NavbarBrand className="gap-3">
         <AcmeLogo />
         <p className="font-bold text-inherit">Ángel Quintero</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-10" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="/">
+        <NavbarItem isActive={pathname === "/"}>
+          <Link color={pathname === "/" ? "foreground" : "foreground"} href="/" className={pathname === "/" ? "" : "opacity-60"}>
             Inicio
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/about">
+        <NavbarItem isActive={pathname === "/about"}>
+          <Link color={pathname === "/about" ? "foreground" : "foreground"} href="/about" className={pathname === "/about" ? "" : "opacity-60"}>
             Sobre mí
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current="page" color="primary" href="/projects">
+        <NavbarItem isActive={pathname === "/projects"}>
+          <Link color={pathname === "/projects" ? "foreground" : "foreground"} href="/projects" className={pathname === "/projects" ? "" : "opacity-60"}>
             Proyectos
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/courses">
+        <NavbarItem isActive={pathname === "/courses"}>
+          <Link color={pathname === "/courses" ? "foreground" : "foreground"} href="/courses" className={pathname === "/courses" ? "" : "opacity-60"}>
             Cursos
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end" className="gap-6">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/contact">Contacto</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/contact" variant="flat" className="px-5">
-            Contáctame
-          </Button>
+      <NavbarContent justify="end">
+        <NavbarItem isActive={pathname === "/contact"}>
+          <Link color={pathname === "/contact" ? "foreground" : "foreground"} href="/contact" className={pathname === "/contact" ? "" : "opacity-60"}>
+            Contacto
+          </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
