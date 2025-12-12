@@ -74,12 +74,12 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="mb-6"
+          className="mb-4"
         >
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             SOBRE MÍ
           </p>
-          <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
             <div className="lg:col-span-5">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
                 Minimal, moderno y directo.
@@ -90,21 +90,8 @@ export default function AboutSection() {
                 <span className="text-foreground font-medium"> experiencia</span> y
                 <span className="text-foreground font-medium"> calidad</span>.
               </p>
-            </div>
-            <div className="lg:col-span-7">
-              <p className="max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
-                Soy <span className="text-foreground font-semibold">Ángel Quintero</span>. Estudio en la{" "}
-                <span className="text-primary font-medium">Universidad Simón Bolívar</span> (Barranquilla) y disfruto construir
-                software con foco en UX, buenas prácticas y un diseño limpio.
-              </p>
 
-              <p className="mt-3 max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
-                Trabajo con <span className="text-foreground font-medium">bases sólidas</span>: componentes reutilizables, estilos
-                consistentes, APIs claras y un flujo ordenado. Busco que cada parte sea fácil de mantener y escalar, sin perder
-                velocidad.
-              </p>
-
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/60">
+              <div className="mt-4 max-w-xl flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/60">
                 <span className="inline-flex items-center gap-3">
                   <span className="h-1 w-1 rounded-full bg-foreground/30" />
                   Producto + calidad
@@ -118,6 +105,19 @@ export default function AboutSection() {
                   Git + buenas prácticas
                 </span>
               </div>
+            </div>
+            <div className="lg:col-span-7">
+              <p className="max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
+                Soy <span className="text-foreground font-semibold">Ángel Quintero</span>. Estudio en la{" "}
+                <span className="text-primary font-medium">Universidad Simón Bolívar</span> (Barranquilla) y disfruto construir
+                software con foco en UX, buenas prácticas y un diseño limpio.
+              </p>
+
+              <p className="mt-3 max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
+                Trabajo con <span className="text-foreground font-medium">bases sólidas</span>: componentes reutilizables, estilos
+                consistentes, APIs claras y un flujo ordenado. Busco que cada parte sea fácil de mantener y escalar, sin perder
+                velocidad.
+              </p>
 
               <p className="mt-3 max-w-2xl text-sm text-foreground/60 leading-relaxed">
                 En proyectos, priorizo <span className="text-foreground font-medium">accesibilidad</span>, detalles de
