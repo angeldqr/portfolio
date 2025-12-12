@@ -45,7 +45,7 @@ export default function NavbarComponent() {
         wrapper: "w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16"
       }}
     >
-        <NavbarBrand 
+        <NavbarBrand
           onClick={() => scrollToSection("inicio")}
           className="cursor-pointer"
         >
@@ -59,36 +59,36 @@ export default function NavbarComponent() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-10" justify="center">
         <NavbarItem isActive={activeSection === "inicio"}>
-          <Link 
-            color="foreground" 
-            onPress={() => scrollToSection("inicio")} 
+          <Link
+            color="foreground"
+            onPress={() => scrollToSection("inicio")}
             className={`cursor-pointer ${activeSection === "inicio" ? "" : "opacity-60"}`}
           >
             Inicio
           </Link>
         </NavbarItem>
         <NavbarItem isActive={activeSection === "about"}>
-          <Link 
-            color="foreground" 
-            onPress={() => scrollToSection("about")} 
+          <Link
+            color="foreground"
+            onPress={() => scrollToSection("about")}
             className={`cursor-pointer ${activeSection === "about" ? "" : "opacity-60"}`}
           >
             Sobre mí
           </Link>
         </NavbarItem>
         <NavbarItem isActive={activeSection === "projects"}>
-          <Link 
-            color="foreground" 
-            onPress={() => scrollToSection("projects")} 
+          <Link
+            color="foreground"
+            onPress={() => scrollToSection("projects")}
             className={`cursor-pointer ${activeSection === "projects" ? "" : "opacity-60"}`}
           >
             Proyectos
           </Link>
         </NavbarItem>
         <NavbarItem isActive={activeSection === "courses"}>
-          <Link 
-            color="foreground" 
-            onPress={() => scrollToSection("courses")} 
+          <Link
+            color="foreground"
+            onPress={() => scrollToSection("courses")}
             className={`cursor-pointer ${activeSection === "courses" ? "" : "opacity-60"}`}
           >
             Cursos
@@ -97,9 +97,9 @@ export default function NavbarComponent() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem isActive={activeSection === "contact"}>
-          <Link 
-            color="foreground" 
-            onPress={() => scrollToSection("contact")} 
+          <Link
+            color="foreground"
+            onPress={() => scrollToSection("contact")}
             className={`cursor-pointer ${activeSection === "contact" ? "" : "opacity-60"}`}
           >
             Contacto
