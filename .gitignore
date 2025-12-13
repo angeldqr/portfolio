@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# certificates
+/public/certificates/*.jpg
+/public/certificates/*.jpeg
+/public/certificates/*.png
+/public/certificates/*.pdf
