@@ -144,7 +144,6 @@
   h5,
   h6 {
     overflow-wrap: break-word;
-    hyphens: auto;
   }
 
   /* Mejora de interacciones táctiles en móviles */

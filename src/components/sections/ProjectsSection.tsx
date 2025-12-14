@@ -49,6 +49,7 @@ const projects: Project[] = [
     icon: "sparkles",
     links: {
       github: "https://github.com/angeldqr/expense-tracker",
+      demo: "https://expense-tracker-beta-ten-83.vercel.app/",
     },
   },
   {
