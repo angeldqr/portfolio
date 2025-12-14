@@ -67,7 +67,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="h-svh overflow-hidden py-10 md:py-12 flex items-center">
+    <section id="about" className="min-h-svh overflow-hidden py-10 md:py-12 flex items-center">
       <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
