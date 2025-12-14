@@ -162,7 +162,7 @@ export default function NavbarComponent() {
             <X className="h-5 w-5 text-foreground" />
           </button>
         </div>
-        
+
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.id}-${index}`}>
             <Link
