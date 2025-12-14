@@ -135,20 +135,20 @@ function CertificateThumbnail({
 
 export default function CoursesSection() {
   return (
-    <section id="courses" className="h-svh overflow-hidden py-10 md:py-12 flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
+    <section id="courses" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="mb-4"
+          className="mb-6 md:mb-8"
         >
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             EDUCACIÓN
           </p>
 
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground leading-tight max-w-3xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight max-w-3xl">
             Aprendizaje continuo.
           </h2>
 
@@ -162,7 +162,7 @@ export default function CoursesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.05 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6"
         >
           {courses.map((c, idx) => {
             const s = getStatusStyle(c.status);
@@ -219,7 +219,7 @@ export default function CoursesSection() {
                   </div>
                 </div>
 
-                <div className="p-5 pb-6 flex flex-col gap-3.5">
+                <div className="p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col gap-3 sm:gap-3.5">
                   <div>
                     <p className="text-sm font-semibold text-foreground leading-snug">
                       {c.title}
@@ -236,8 +236,8 @@ export default function CoursesSection() {
                     ))}
                   </div>
 
-                  <div className="mt-1 flex items-center justify-between gap-3">
-                    <div className="h-px flex-1 bg-foreground/10" />
+                  <div className="mt-1 flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
+                    <div className="h-px flex-1 bg-foreground/10 min-w-[40px]" />
                     <LinkButton href={c.href} label="Ver en Udemy" />
                   </div>
                 </div>

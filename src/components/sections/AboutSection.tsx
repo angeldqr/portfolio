@@ -67,21 +67,21 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="min-h-svh overflow-hidden py-10 md:py-12 flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
+    <section id="about" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="mb-4"
+          className="mb-6 md:mb-8"
         >
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             SOBRE MÍ
           </p>
           <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
             <div className="lg:col-span-5">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
                 Minimal, moderno y directo.
               </h2>
 
@@ -92,15 +92,15 @@ export default function AboutSection() {
               </p>
 
               <div className="mt-4 max-w-xl flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/60">
-                <span className="inline-flex items-center gap-3">
+                <span className="inline-flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-foreground/30" />
                   Producto + calidad
                 </span>
-                <span className="inline-flex items-center gap-3">
+                <span className="inline-flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-foreground/30" />
                   UI limpia + performance
                 </span>
-                <span className="inline-flex items-center gap-3">
+                <span className="inline-flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-foreground/30" />
                   Git + buenas prácticas
                 </span>
@@ -127,7 +127,7 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {/* Stack (chips) */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -137,7 +137,7 @@ export default function AboutSection() {
             className="lg:col-span-7"
           >
             <Card className="bg-default-50">
-              <CardBody className="p-5 md:p-6">
+              <CardBody className="p-4 sm:p-5 md:p-6">
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-sm font-semibold text-foreground">Stack</h3>
                   <span className="text-xs text-foreground/60">Con qué trabajo</span>
@@ -207,7 +207,7 @@ export default function AboutSection() {
             className="lg:col-span-5"
           >
             <Card className="bg-default-50">
-              <CardBody className="p-6">
+              <CardBody className="p-4 sm:p-5 md:p-6">
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-sm font-semibold text-foreground">Cómo trabajo</h3>
                   <span className="text-xs text-foreground/60">En pocas palabras</span>

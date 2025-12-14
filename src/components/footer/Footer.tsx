@@ -27,15 +27,15 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-foreground/10 bg-background/50 backdrop-blur">
-      <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-8">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-6 sm:py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Copyright */}
-          <p className="text-sm text-foreground/60">
+          <p className="text-xs sm:text-sm text-foreground/60 text-center md:text-left">
             © {new Date().getFullYear()} Ángel Quintero. Todos los derechos reservados.
           </p>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
             {socialLinks.map((link) => (
               <a
                 key={link.name}

@@ -117,4 +117,50 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  /* Mejoras para responsividad y scrolling suave */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Mejora de imágenes responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Evitar overflow en textos largos */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Mejora de interacciones táctiles en móviles */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mejora de rendimiento en animaciones */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

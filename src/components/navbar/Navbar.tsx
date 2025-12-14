@@ -1,17 +1,18 @@
 ﻿"use client";
 
-import { 
-  Navbar, 
-  NavbarBrand, 
-  NavbarContent, 
-  NavbarItem, 
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link 
+  Link
 } from "@heroui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 export default function NavbarComponent() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -52,7 +53,7 @@ export default function NavbarComponent() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); // Cierra el menú al hacer clic
+      setIsMenuOpen(false);
     }
   };
 
@@ -63,16 +64,14 @@ export default function NavbarComponent() {
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
       classNames={{
-        wrapper: "w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16"
+        wrapper: "w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16"
       }}
     >
-      {/* Toggle para móvil */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"} />
       </NavbarContent>
 
-      {/* Logo (móvil centrado) */}
-      <NavbarContent className="sm:hidden pr-3" justify="center">
+      <NavbarContent className="sm:hidden pr-2" justify="center">
         <NavbarBrand
           onClick={() => scrollToSection("inicio")}
           className="cursor-pointer"
@@ -80,14 +79,13 @@ export default function NavbarComponent() {
           <Image
             src="/aq.png"
             alt="Logo"
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             className="rounded-md"
           />
         </NavbarBrand>
       </NavbarContent>
 
-      {/* Logo (desktop) */}
       <NavbarContent className="hidden sm:flex" justify="start">
         <NavbarBrand
           onClick={() => scrollToSection("inicio")}
@@ -103,7 +101,6 @@ export default function NavbarComponent() {
         </NavbarBrand>
       </NavbarContent>
 
-      {/* Menú desktop */}
       <NavbarContent className="hidden sm:flex gap-10" justify="center">
         <NavbarItem isActive={activeSection === "inicio"}>
           <Link
@@ -155,8 +152,17 @@ export default function NavbarComponent() {
         </NavbarItem>
       </NavbarContent>
 
-      {/* Menú móvil */}
       <NavbarMenu>
+        <div className="flex justify-end px-4 pt-2 pb-2">
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="inline-flex items-center justify-center h-8 w-8 rounded-full hover:bg-foreground/10 transition-colors"
+            aria-label="Cerrar menú"
+          >
+            <X className="h-5 w-5 text-foreground" />
+          </button>
+        </div>
+        
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.id}-${index}`}>
             <Link

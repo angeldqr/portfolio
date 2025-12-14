@@ -192,34 +192,34 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="h-svh overflow-hidden py-10 md:py-12 pt-20 md:pt-24 flex items-center"
+      className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center"
     >
-      <main className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
+      <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="max-w-3xl mb-10 md:mb-12"
+          className="max-w-3xl mb-8 md:mb-10 lg:mb-12"
         >
           <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-foreground/15" />
+            <span className="h-px w-6 sm:w-8 bg-foreground/15" />
             <p className="text-xs font-semibold tracking-[0.22em] text-foreground/55">
               PROYECTOS
             </p>
             <span className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent" />
           </div>
 
-          <h2 className="mt-4 text-[40px] leading-[1.05] md:text-6xl font-semibold text-foreground tracking-tight">
+          <h2 className="mt-4 text-3xl sm:text-[40px] leading-[1.05] md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight">
             Una selección breve.
           </h2>
 
-          <p className="mt-4 text-sm md:text-base text-foreground/60 leading-relaxed max-w-[60ch]">
+          <p className="mt-3 sm:mt-4 text-sm md:text-base text-foreground/60 leading-relaxed max-w-[60ch]">
             Aplicaciones y soluciones que he construido.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 items-stretch">
           {projects.map((p, idx) => {
             const accent = getAccentClasses(p.accent);
 
@@ -272,7 +272,7 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  <div className="p-6 pb-8 flex flex-col gap-6 flex-1">
+                  <div className="p-4 sm:p-5 md:p-6 pb-6 md:pb-8 flex flex-col gap-4 md:gap-6 flex-1">
                     <p className="text-sm text-foreground/65 leading-relaxed">
                       {p.description}
                     </p>
@@ -283,16 +283,16 @@ export default function ProjectsSection() {
                       ))}
                     </div>
 
-                    <div className="space-y-3 flex-1">
+                    <div className="space-y-2 md:space-y-3 flex-1">
                       {p.highlights.map((h) => (
-                        <div key={h} className="flex items-center gap-2">
-                          <span className={"h-2 w-2 rounded-full " + accent.dot} />
-                          <p className="text-xs text-foreground/70">{h}</p>
+                        <div key={h} className="flex items-start gap-2">
+                          <span className={"h-2 w-2 rounded-full flex-shrink-0 mt-1 " + accent.dot} />
+                          <p className="text-xs text-foreground/70 leading-relaxed">{h}</p>
                         </div>
                       ))}
                     </div>
 
-                    <div className="pt-3">
+                    <div className="pt-2 md:pt-3">
                       <div className="h-px w-full bg-foreground/10" />
                     </div>
                   </div>

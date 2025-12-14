@@ -61,14 +61,14 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="min-h-svh overflow-hidden py-10 md:py-12 flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
+    <section id="contact" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="mb-4"
+          className="mb-6 md:mb-8"
         >
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             CONTACTO
@@ -76,7 +76,7 @@ export default function ContactSection() {
 
           <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
             <div className="lg:col-span-5">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
                 Hablemos.
               </h2>
 
@@ -87,7 +87,7 @@ export default function ContactSection() {
               {/* Links sociales */}
               <div className="mt-6">
                 <p className="text-xs font-medium text-foreground/50 mb-3">Encuéntrame en:</p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   {socialLinks.map((link) => (
                     <a
                       key={link.name}
@@ -113,7 +113,7 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.05 }}
                 viewport={{ once: true }}
-                className="rounded-3xl border border-foreground/10 bg-background/10 p-6 md:p-8 space-y-5"
+                className="rounded-3xl border border-foreground/10 bg-background/10 p-4 sm:p-5 md:p-6 lg:p-8 space-y-4 md:space-y-5"
               >
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm font-medium text-foreground/80">
