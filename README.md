@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Personal
 
-## Getting Started
+Portafolio web profesional construido con tecnologías modernas para mostrar proyectos, habilidades y experiencia como desarrollador full-stack.
 
-First, run the development server:
+## Tecnologías Principales
+
+- **Next.js 16** - Framework React con App Router y Turbopack
+- **TypeScript** - Tipado estático para mayor confiabilidad
+- **Tailwind CSS v4** - Estilos utilitarios modernos
+- **HeroUI** - Componentes UI optimizados para React 19
+- **Framer Motion** - Animaciones fluidas y transiciones
+- **Lucide React** - Sistema de iconos consistente
+
+## Características
+
+- Diseño responsivo optimizado para todos los dispositivos
+- Navegación suave entre secciones con scroll tracking
+- Modo oscuro por defecto con sistema de colores OKLCH
+- Animaciones sutiles y profesionales
+- SEO optimizado con metadata completa
+- Rendimiento optimizado con Static Site Generation
+- Formulario de contacto funcional
+
+## Estructura del Proyecto
+
+```
+portfolio/
+├── src/
+│   ├── app/                    # App Router de Next.js
+│   │   ├── layout.tsx         # Layout principal y metadata
+│   │   ├── page.tsx           # Página de inicio
+│   │   └── globals.css        # Estilos globales
+│   ├── components/
+│   │   ├── navbar/            # Navegación principal
+│   │   ├── footer/            # Pie de página
+│   │   ├── sections/          # Secciones del portfolio
+│   │   └── providers/         # Providers de contexto
+│   └── lib/                   # Utilidades y helpers
+├── public/                     # Recursos estáticos
+└── hero.ts                     # Configuración de Tailwind/HeroUI
+```
+
+## Desarrollo Local
+
+### Prerrequisitos
+
+- Node.js 18.17 o superior
+- npm, yarn, pnpm o bun
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/angeldqr/portfolio.git
+
+# Navegar al directorio
+cd portfolio
+
+# Instalar dependencias
+npm install
+```
+
+### Ejecutar en Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Compilar para Producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Secciones
 
-To learn more about Next.js, take a look at the following resources:
+- **Inicio** - Presentación principal y CTAs
+- **Sobre mí** - Biografía, stack técnico y soft skills
+- **Proyectos** - Showcase de proyectos destacados con previews
+- **Cursos** - Certificaciones y formación continua
+- **Contacto** - Formulario y enlaces de redes sociales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Despliegue
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El proyecto está optimizado para desplegarse en [Vercel](https://vercel.com):
 
-## Deploy on Vercel
+1. Conecta tu repositorio de GitHub
+2. Vercel detectará automáticamente la configuración de Next.js
+3. Despliega con un solo click
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Cualquier push a la rama `main` desplegará automáticamente los cambios.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licencia
+
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
+## Contacto
+
+Ángel Quintero - Desarrollador Full-Stack
+
+- GitHub: [@angeldqr](https://github.com/angeldqr)
+- LinkedIn: [Ángel Quintero](https://linkedin.com/in/angeldqr)
+- Email: contact@angelquintero.dev
