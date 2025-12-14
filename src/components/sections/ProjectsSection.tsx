@@ -193,7 +193,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center"
+      className="min-h-svh overflow-visible pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20"
     >
       <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
