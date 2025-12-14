@@ -99,8 +99,8 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 
 ## Contacto
 
-Ángel Quintero - Desarrollador Full-Stack
+Ángel Quintero - Desarrollador Web
 
 - GitHub: [@angeldqr](https://github.com/angeldqr)
 - LinkedIn: [Ángel Quintero](https://linkedin.com/in/angeldqr)
-- Email: contact@angelquintero.dev
+- Email: angelquinteror102@gmail.com
