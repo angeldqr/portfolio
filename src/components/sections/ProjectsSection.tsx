@@ -31,7 +31,7 @@ const projects: Project[] = [
     accent: "blue",
     icon: "layers",
     links: {
-      github: "https://github.com/angeldqr/cronify",
+      github: "",
       demo: "https://cronify-nu.vercel.app/#/",
     },
   },
