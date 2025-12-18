@@ -193,30 +193,26 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-svh overflow-visible pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20"
+      className="min-h-svh overflow-visible pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12"
     >
       <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
-<motion.div
+        <motion.div
           suppressHydrationWarning={true}
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           viewport={{ once: true }}
-          className="max-w-3xl mb-8 md:mb-10 lg:mb-12"
+          className="mb-6 md:mb-8"
         >
-          <div className="flex items-center gap-3">
-            <span className="h-px w-6 sm:w-8 bg-foreground/15" />
-            <p className="text-xs font-semibold tracking-[0.22em] text-foreground/55">
-              PROYECTOS
-            </p>
-            <span className="h-px flex-1 bg-gradient-to-r from-foreground/15 to-transparent" />
-          </div>
+          <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
+            PROYECTOS
+          </p>
 
-          <h2 className="mt-4 text-3xl sm:text-[40px] leading-[1.05] md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight">
+          <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
             Una selección breve.
           </h2>
 
-          <p className="mt-3 sm:mt-4 text-sm md:text-base text-foreground/60 leading-relaxed max-w-[60ch]">
+          <p className="mt-3 text-sm md:text-base text-foreground/60 leading-relaxed max-w-2xl">
             Aplicaciones y soluciones que he construido.
           </p>
         </motion.div>
@@ -226,7 +222,7 @@ export default function ProjectsSection() {
             const accent = getAccentClasses(p.accent);
 
             return (
-<motion.article
+              <motion.article
                 suppressHydrationWarning={true}
                 key={p.title}
                 initial={{ opacity: 0, y: 16 }}
