@@ -67,7 +67,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
+    <section id="about" className="min-h-svh overflow-hidden pt-32 sm:pt-36 md:pt-44 pb-16 md:pb-20 flex items-center">
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -79,13 +79,13 @@ export default function AboutSection() {
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             SOBRE MÍ
           </p>
-          <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
+          <div className="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             <div className="lg:col-span-5">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
                 Minimal, moderno y directo.
               </h2>
 
-              <p className="mt-3 max-w-xl text-sm md:text-base text-foreground/60 leading-relaxed">
+              <p className="mt-4 max-w-xl text-base md:text-lg text-foreground/60 leading-relaxed">
                 Full‑stack con foco en <span className="text-foreground font-medium">claridad</span>,
                 <span className="text-foreground font-medium"> experiencia</span> y
                 <span className="text-foreground font-medium"> calidad</span>.
@@ -107,7 +107,7 @@ export default function AboutSection() {
               </div>
             </div>
             <div className="lg:col-span-7">
-              <p className="max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
+              <p className="max-w-2xl text-base md:text-lg text-foreground/60 leading-relaxed">
                 Soy <span className="text-foreground font-semibold">Ángel Quintero</span>. Estudio en la{" "}
                 <span className="text-primary font-medium">Universidad Simón Bolívar</span> (Barranquilla) y disfruto construir
                 software con foco en UX, buenas prácticas y un diseño limpio.
@@ -129,14 +129,14 @@ export default function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {/* Stack (chips) */}
-          <motion.div
+<motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.05 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <Card className="bg-default-50">
+            <Card className="bg-white/5 backdrop-blur-sm border border-foreground/5 hover:shadow-md">
               <CardBody className="p-4 sm:p-5 md:p-6">
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-sm font-semibold text-foreground">Stack</h3>
@@ -155,7 +155,7 @@ export default function AboutSection() {
                         viewport={{ once: true }}
                       >
                         <div className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/30 px-3 py-2 hover:bg-background/50 transition-colors">
-                          <Icon className="h-4 w-4" style={{ color: skill.color }} />
+                          <Icon className="h-5 w-5 hover:scale-105 transition-transform" style={{ color: skill.color }} />
                           <span className="text-sm font-medium text-foreground/80">
                             {skill.name}
                           </span>
@@ -199,14 +199,14 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Traits (soft + intereses) */}
-          <motion.div
+<motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.08 }}
             viewport={{ once: true }}
             className="lg:col-span-5"
           >
-            <Card className="bg-default-50">
+            <Card className="bg-white/5 backdrop-blur-sm border border-foreground/5 hover:shadow-md">
               <CardBody className="p-4 sm:p-5 md:p-6">
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-sm font-semibold text-foreground">Cómo trabajo</h3>
@@ -224,7 +224,7 @@ export default function AboutSection() {
                       className="rounded-xl border border-foreground/10 bg-background/30 p-3"
                     >
                       <div className="flex items-start gap-2">
-                        <div className="mt-0.5 rounded-lg bg-primary/10 p-2 text-primary">
+<div className="mt-0.5 rounded-lg bg-primary/10 p-2 text-primary hover:scale-105 transition-transform">
                           {item.icon}
                         </div>
                         <div>
