@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   Navbar,
@@ -27,26 +27,40 @@ export default function NavbarComponent() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["inicio", "about", "projects", "courses", "contact"];
-      const scrollPosition = window.scrollY + 100;
+    let timeoutId: NodeJS.Timeout;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
+    const handleScroll = () => {
+      // Debounce para mejorar rendimiento
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      timeoutId = setTimeout(() => {
+        const sections = ["inicio", "about", "projects", "courses", "contact"];
+        const scrollPosition = window.scrollY + 100;
+
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
-      }
+      }, 16); // ~60fps
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {

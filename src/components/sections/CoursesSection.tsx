@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type React from "react";
 
 type CourseStatus = "Completado" | "En progreso" | "Recomendado";
@@ -111,8 +112,14 @@ function CertificateThumbnail({
   return (
     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-foreground/10 bg-background/20">
       {src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={title} className="h-full w-full object-contain" />
+        <Image
+          src={src}
+          alt={title}
+          className="h-full w-full object-contain"
+          width={400}
+          height={300}
+          unoptimized={true}
+        />
       ) : (
         <div className="relative h-full w-full">
           <div className="absolute inset-0 opacity-[0.22] [background-image:linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:36px_36px]" />

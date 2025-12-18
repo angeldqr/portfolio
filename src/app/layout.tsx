@@ -58,11 +58,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark text-foreground bg-background">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="es" className="dark text-foreground bg-background" suppressHydrationWarning>
+
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <HeroClientProvider>
-          <Navbar />
-          {children}
+          <div id="root-app">
+            <Navbar />
+            {children}
+          </div>
         </HeroClientProvider>
       </body>
     </html>
