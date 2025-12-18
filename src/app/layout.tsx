@@ -58,8 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark text-foreground bg-background" suppressHydrationWarning>
-
+    <html lang="es" className="dark text-foreground bg-background">
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <HeroClientProvider>
           <div id="root-app">

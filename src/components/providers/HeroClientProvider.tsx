@@ -9,9 +9,7 @@ export default function HeroClientProvider({
 }) {
   return (
     <HeroUIProvider>
-      <div suppressHydrationWarning>
-        {children}
-      </div>
+      {children}
     </HeroUIProvider>
   );
 }

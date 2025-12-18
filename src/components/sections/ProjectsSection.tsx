@@ -197,7 +197,6 @@ export default function ProjectsSection() {
     >
       <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
-          suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -223,7 +222,6 @@ export default function ProjectsSection() {
 
             return (
               <motion.article
-                suppressHydrationWarning={true}
                 key={p.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
