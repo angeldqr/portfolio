@@ -63,7 +63,8 @@ export default function ContactSection() {
   return (
     <section id="contact" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
-        <motion.div
+<motion.div
+          suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -107,7 +108,8 @@ export default function ContactSection() {
 
             <div className="lg:col-span-7">
               {/* Formulario */}
-              <motion.form
+<motion.form
+                suppressHydrationWarning={true}
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}

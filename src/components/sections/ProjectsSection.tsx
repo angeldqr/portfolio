@@ -196,7 +196,8 @@ export default function ProjectsSection() {
       className="min-h-svh overflow-visible pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20"
     >
       <main className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
-        <motion.div
+<motion.div
+          suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -225,7 +226,8 @@ export default function ProjectsSection() {
             const accent = getAccentClasses(p.accent);
 
             return (
-              <motion.article
+<motion.article
+                suppressHydrationWarning={true}
                 key={p.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}

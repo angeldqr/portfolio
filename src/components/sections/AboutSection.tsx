@@ -70,6 +70,7 @@ export default function AboutSection() {
     <section id="about" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
+          suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
@@ -79,8 +80,8 @@ export default function AboutSection() {
           <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
             SOBRE MÍ
           </p>
-          <div className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
-            <div className="lg:col-span-5">
+          <div suppressHydrationWarning className="mt-3 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
+            <div suppressHydrationWarning className="lg:col-span-5">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
                 Minimal, moderno y directo.
               </h2>
@@ -91,7 +92,7 @@ export default function AboutSection() {
                 <span className="text-foreground font-medium"> calidad</span>.
               </p>
 
-              <div className="mt-4 max-w-xl flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/60">
+              <div suppressHydrationWarning className="mt-4 max-w-xl flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/60">
                 <span className="inline-flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-foreground/30" />
                   Producto + calidad
@@ -106,7 +107,7 @@ export default function AboutSection() {
                 </span>
               </div>
             </div>
-            <div className="lg:col-span-7">
+            <div suppressHydrationWarning className="lg:col-span-7">
               <p className="max-w-2xl text-sm md:text-base text-foreground/60 leading-relaxed">
                 Soy <span className="text-foreground font-semibold">Ángel Quintero</span>. Estudio en la{" "}
                 <span className="text-primary font-medium">Universidad Simón Bolívar</span> (Barranquilla) y disfruto construir

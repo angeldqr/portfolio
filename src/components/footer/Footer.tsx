@@ -7,6 +7,9 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Añadido para solucionar error de hidratación
+  const suppressHydrationWarning = true;
+
   const socialLinks = [
     {
       name: "GitHub",
