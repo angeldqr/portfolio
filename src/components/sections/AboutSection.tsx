@@ -54,8 +54,8 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="min-h-svh overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-8 md:pb-10 flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+    <section id="about" className="min-h-svh overflow-hidden pt-16 pb-10 flex items-start">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 mt-8">
         <motion.div
           suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 10 }}

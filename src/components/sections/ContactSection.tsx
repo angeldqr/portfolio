@@ -61,8 +61,8 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+    <section id="contact" className="min-h-svh overflow-hidden pt-16 pb-10 flex items-start">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 mt-8">
 <motion.div
           suppressHydrationWarning={true}
           initial={{ opacity: 0, y: 10 }}

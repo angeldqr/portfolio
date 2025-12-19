@@ -142,7 +142,7 @@ function CertificateThumbnail({
 
 export default function CoursesSection() {
   return (
-    <section id="courses" className="min-h-svh overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-10 md:pb-12 flex items-center">
+    <section id="courses" className="min-h-svh overflow-hidden pt-12 pb-10 flex items-start">
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
 <motion.div
           suppressHydrationWarning={true}
