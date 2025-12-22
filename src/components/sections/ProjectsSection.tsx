@@ -190,7 +190,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-svh overflow-visible pt-12 pb-10 flex items-start"
+      className="min-h-svh overflow-visible pt-6 pb-10 flex items-start"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <motion.div
