@@ -52,6 +52,32 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ángel Quintero",
+  "jobTitle": "Desarrollador Full-Stack",
+  "url": "https://angelquintero.dev",
+  "sameAs": [
+    "https://github.com/angeldqr",
+    "https://www.linkedin.com/in/angeldqr/"
+  ],
+  "knowsAbout": ["React", "Next.js", "TypeScript", "Python", "Django", "PostgreSQL", "Tailwind CSS", "Node.js"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidad Simón Bolívar"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barranquilla",
+    "addressCountry": "Colombia"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -60,6 +86,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark text-foreground bg-background">
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <HeroClientProvider>
           <div id="root-app">
             <Navbar />
