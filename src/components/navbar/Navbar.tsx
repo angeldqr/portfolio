@@ -1,17 +1,9 @@
 "use client";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-  Link
-} from "@heroui/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function NavbarComponent() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -22,8 +14,8 @@ export default function NavbarComponent() {
     { id: "inicio", label: "Inicio" },
     { id: "about", label: "Sobre mí" },
     { id: "projects", label: "Proyectos" },
+    { id: "services", label: "Servicios" },
     { id: "courses", label: "Educación" },
-    { id: "contact", label: "Contacto" },
   ];
 
   useEffect(() => {
@@ -37,7 +29,7 @@ export default function NavbarComponent() {
       }
 
       timeoutId = setTimeout(() => {
-        const sections = ["inicio", "about", "projects", "courses", "contact"];
+        const sections = ["inicio", "about", "projects", "services", "courses", "contact"];
         const scrollPosition = window.scrollY + 150;
 
         for (const section of sections) {
@@ -65,7 +57,6 @@ export default function NavbarComponent() {
   }, []);
 
   useEffect(() => {
-    // Prevenir scroll del body cuando el menú está abierto
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -80,7 +71,7 @@ export default function NavbarComponent() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
+      const offset = 20;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -94,145 +85,109 @@ export default function NavbarComponent() {
 
   return (
     <>
-      {/* Overlay de fondo cuando el menú está abierto */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-background/95 backdrop-blur-md z-[9998] sm:hidden"
-          onClick={() => setIsMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      <Navbar
-        isBordered
-        isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}
-        maxWidth="full"
-        classNames={{
-          base: `transition-all duration-300 z-[10000] ${isScrolled ? "backdrop-blur-md bg-background/80" : "bg-background/40"}`,
-          wrapper: "w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16",
-          item: "hidden sm:flex",
-          menu: "bg-background/98 backdrop-blur-xl sm:hidden z-[9999]",
-        }}
+      {/* Main Navbar */}
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled ? "py-3" : "py-4"
+          }`}
       >
-        <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle 
-            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-            className="text-foreground"
-          />
-        </NavbarContent>
-
-        <NavbarContent className="sm:hidden pr-2" justify="center">
-          <NavbarBrand
-            onClick={() => scrollToSection("inicio")}
-            className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
-          >
-            <Image
-              src="/aq.png"
-              alt="Logo"
-              width={70}
-              height={70}
-              className="rounded-md"
-              priority
-            />
-          </NavbarBrand>
-        </NavbarContent>
-
-        <NavbarContent className="hidden sm:flex" justify="start">
-          <NavbarBrand
-            onClick={() => scrollToSection("inicio")}
-            className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
-          >
-            <Image
-              src="/aq.png"
-              alt="Logo"
-              width={120}
-              height={120}
-              className="rounded-md"
-              priority
-            />
-          </NavbarBrand>
-        </NavbarContent>
-
-        <NavbarContent className="hidden sm:flex gap-6 md:gap-8 lg:gap-10" justify="center">
-          {menuItems.slice(0, -1).map((item) => (
-            <NavbarItem key={item.id} isActive={activeSection === item.id}>
-              <Link
-                color="foreground"
-                onPress={() => scrollToSection(item.id)}
-                className={`relative cursor-pointer transition-all duration-200 ${
-                  activeSection === item.id 
-                    ? "text-foreground font-medium" 
-                    : "text-foreground/60 hover:text-foreground/90"
-                }`}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                )}
-              </Link>
-            </NavbarItem>
-          ))}
-        </NavbarContent>
-
-        <NavbarContent justify="end">
-          <NavbarItem isActive={activeSection === "contact"}>
-            <Link
-              color="foreground"
-              onPress={() => scrollToSection("contact")}
-              className={`relative cursor-pointer transition-all duration-200 ${
-                activeSection === "contact" 
-                  ? "text-foreground font-medium" 
-                  : "text-foreground/60 hover:text-foreground/90"
-              }`}
-            >
-              Contacto
-              {activeSection === "contact" && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-              )}
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-
-        <NavbarMenu>
-          <div className="px-4 pt-4 pb-4 border-b border-foreground/10">
-            <NavbarBrand
-              onClick={() => {
-                scrollToSection("inicio");
-                setIsMenuOpen(false);
-              }}
-              className="cursor-pointer"
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("inicio")}
+              className="cursor-pointer relative z-10"
             >
               <Image
                 src="/aq.png"
-                alt="Logo"
-                width={60}
-                height={60}
-                className="rounded-md"
+                alt="AQ Logo"
+                width={65}
+                height={65}
+                className="rounded-lg"
+                priority
               />
-            </NavbarBrand>
-          </div>
+            </motion.div>
 
-          <div className="px-2 py-4">
-            {menuItems.map((item, index) => (
-              <NavbarMenuItem key={`${item.id}-${index}`}>
-                <Link
-                  className={`w-full py-3 px-4 rounded-xl transition-all duration-200 ${
-                    activeSection === item.id
-                      ? "bg-primary/10 text-primary font-semibold"
-                      : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
-                  }`}
-                  color={activeSection === item.id ? "primary" : "foreground"}
-                  onPress={() => scrollToSection(item.id)}
-                  size="lg"
-                >
-                  {item.label}
-                </Link>
-              </NavbarMenuItem>
-            ))}
+            {/* Center Navigation Capsule - Desktop */}
+            <nav className="hidden md:flex items-center">
+              <div className="flex items-center gap-1 px-2 py-2 rounded-full bg-foreground/5 border border-foreground/10 backdrop-blur-xl">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${activeSection === item.id
+                      ? "text-foreground"
+                      : "text-foreground/50 hover:text-foreground/80"
+                      }`}
+                  >
+                    {item.label}
+                    {/* Active indicator dot */}
+                    {activeSection === item.id && (
+                      <motion.span
+                        layoutId="activeIndicator"
+                        className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-foreground"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </nav>
+
+            {/* Right CTA - Desktop */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("contact")}
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg hover:shadow-foreground/20"
+            >
+              Contacto
+            </motion.button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden relative z-10 p-2 text-foreground"
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
-        </NavbarMenu>
-      </Navbar>
+        </div>
+      </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      <motion.div
+        initial={false}
+        animate={isMenuOpen ? { opacity: 1, pointerEvents: "auto" as const } : { opacity: 0, pointerEvents: "none" as const }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-[90] bg-background/98 backdrop-blur-xl md:hidden"
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-8">
+          {[...menuItems, { id: "contact", label: "Contacto" }].map((item, index) => (
+            <motion.button
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              onClick={() => scrollToSection(item.id)}
+              className={`text-3xl font-semibold transition-colors ${activeSection === item.id
+                ? "text-foreground"
+                : "text-foreground/40 hover:text-foreground/70"
+                }`}
+            >
+              {item.label}
+              {activeSection === item.id && (
+                <span className="block w-2 h-2 mx-auto mt-2 rounded-full bg-amber-400" />
+              )}
+            </motion.button>
+          ))}
+        </div>
+      </motion.div>
     </>
   );
 }
