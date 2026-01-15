@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Globe, Layers, Sparkles } from "lucide-react";
-import type React from "react";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 type Project = {
+  id: number;
   title: string;
+  tagline: string;
   description: string;
   stack: string[];
-  highlights: string[];
-  accent: "blue" | "purple" | "yellow";
-  icon: "globe" | "layers" | "sparkles";
+  image: string;
+  color: string;
   links: {
     github?: string;
     demo?: string;
@@ -19,170 +20,205 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: 1,
     title: "Cronify",
+    tagline: "Gestión inteligente de vencimientos",
     description:
-      "Plataforma empresarial para gestión inteligente de vencimientos. Automatiza recordatorios críticos y centraliza el control de eventos importantes para equipos de trabajo.",
-    highlights: [
-      "Sistema de autenticación seguro con JWT y Microsoft OAuth 2.0",
-      "Dashboard interactivo con calendario y línea de tiempo de eventos",
-      "Motor de notificaciones automatizado con Celery y Redis",
-    ],
-    stack: ["Vue 3", "Quasar", "Pinia", "Django", "DRF", "PostgreSQL"],
-    accent: "blue",
-    icon: "layers",
+      "Plataforma empresarial que automatiza recordatorios críticos y centraliza el control de eventos importantes para equipos de trabajo.",
+    stack: ["Vue 3", "Quasar", "Django", "PostgreSQL"],
+    image: "/projects/cronify.png",
+    color: "#338EF7",
     links: {
-      github: "",
       demo: "https://cronify-nu.vercel.app/#/",
     },
   },
   {
+    id: 2,
     title: "Expense Tracker",
+    tagline: "Control financiero visual",
     description:
-      "Aplicación financiera personal que transforma datos complejos en insights visuales. Diseñada para profesionales que buscan control total sobre sus finanzas.",
-    highlights: [
-      "Dashboard minimalista con métricas financieras en tiempo real",
-      "Visualización de datos con gráficas interactivas (Chart.js)",
-      "Sistema de categorización inteligente con filtros avanzados",
-    ],
-    stack: ["Flask", "SQLAlchemy", "PostgreSQL", "JavaScript", "Chart.js", "HTML/CSS"],
-    accent: "yellow",
-    icon: "sparkles",
+      "Aplicación que transforma datos complejos en insights visuales para profesionales que buscan control total sobre sus finanzas.",
+    stack: ["Python", "JavaScript", "PostgreSQL", "Chart.js"],
+    image: "/projects/expense.png",
+    color: "#F5A524",
     links: {
       github: "https://github.com/angeldqr/expense-tracker",
       demo: "https://expense-tracker-beta-ten-83.vercel.app/",
     },
   },
   {
-    title: "Portfolio profesional",
+    id: 3,
+    title: "Portfolio",
+    tagline: "Diseño minimal y moderno",
     description:
-      "Sitio web personal con enfoque en diseño minimal y experiencia de usuario. Optimizado para rendimiento y construido con las últimas tecnologías web.",
-    highlights: [
-      "Arquitectura moderna con Next.js 15 y App Router",
-      "Sistema de diseño consistente con Tailwind CSS v4 y HeroUI",
-      "Animaciones fluidas y micro-interacciones con Framer Motion",
-    ],
-    stack: ["Next.js", "TypeScript", "Tailwind v4", "HeroUI", "Framer Motion"],
-    accent: "purple",
-    icon: "globe",
+      "Sitio web personal optimizado para rendimiento, construido con las últimas tecnologías web y animaciones fluidas.",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    image: "/projects/portfolio.png",
+    color: "#ffffffff",
     links: {
       github: "https://github.com/angeldqr/portfolio",
     },
   },
+  {
+    id: 4,
+    title: "Próximo Proyecto",
+    tagline: "En desarrollo activo",
+    description:
+      "Un nuevo proyecto está en camino. Estoy trabajando en algo especial que pronto estará disponible. ¡Mantente atento!",
+    stack: ["TypeScript", "Next.js", "En progreso..."],
+    image: "/projects/coming-soon.png",
+    color: "#ebbe6cff",
+    links: {},
+  },
 ];
 
-function isExternalLink(url?: string) {
-  return Boolean(url && /^https?:\/\//i.test(url));
-}
-
-function getAccentClasses(accent: Project["accent"]) {
-  switch (accent) {
-    case "purple":
-      return {
-        ring: "hover:ring-[rgba(147,83,211,0.22)]",
-        glow: "bg-[rgba(147,83,211,0.10)]",
-        dot: "bg-[#9353D3]",
-        badge: "text-[rgba(147,83,211,0.95)] border-[rgba(147,83,211,0.25)] bg-[rgba(147,83,211,0.10)]",
-      };
-    case "yellow":
-      return {
-        ring: "hover:ring-[rgba(245,165,36,0.22)]",
-        glow: "bg-[rgba(245,165,36,0.10)]",
-        dot: "bg-[#F5A524]",
-        badge: "text-[rgba(245,165,36,0.95)] border-[rgba(245,165,36,0.25)] bg-[rgba(245,165,36,0.10)]",
-      };
-    default:
-      return {
-        ring: "hover:ring-[rgba(51,142,247,0.22)]",
-        glow: "bg-[rgba(51,142,247,0.10)]",
-        dot: "bg-[#338EF7]",
-        badge: "text-[rgba(51,142,247,0.95)] border-[rgba(51,142,247,0.25)] bg-[rgba(51,142,247,0.10)]",
-      };
-  }
-}
-
-function ActionButton({
-  href,
-  label,
-  icon,
-}: {
-  href?: string;
-  label: string;
-  icon: React.ReactNode;
-}) {
-  const enabled = isExternalLink(href);
-
-  const base =
-    "inline-flex items-center justify-center rounded-full border border-foreground/10 bg-background/30 backdrop-blur-md h-8 w-8 text-foreground/70 transition-all duration-200 shadow-sm";
-  const enabledCls = " hover:text-foreground hover:bg-background/50 hover:border-foreground/20 hover:shadow-md hover:scale-105";
-  const disabledCls = " opacity-35 cursor-not-allowed";
-
-  if (!enabled) {
-    return (
-      <span
-        className={base + disabledCls}
-        aria-disabled="true"
-        title={`${label}: próximamente`}
-      >
-        <span className="sr-only">Próximamente</span>
-        {icon}
-      </span>
-    );
-  }
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const isEven = index % 2 === 0;
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className={base + enabledCls}
-      aria-label={`${label}: ${href}`}
-      title={label}
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: index * 0.15, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative"
     >
-      {icon}
-    </a>
-  );
-}
+      <div
+        className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+          } gap-8 lg:gap-16 items-center`}
+      >
+        {/* Project Visual */}
+        <div className="relative w-full lg:w-3/5 aspect-[16/10] rounded-2xl overflow-hidden">
+          {/* Gradient Background */}
+          <div
+            className="absolute inset-0 transition-all duration-700"
+            style={{
+              background: `linear-gradient(135deg, ${project.color}15 0%, ${project.color}05 50%, transparent 100%)`,
+            }}
+          />
 
-function ProjectIcon({
-  name,
-  className,
-}: {
-  name: Project["icon"];
-  className?: string;
-}) {
-  if (name === "globe") return <Globe className={className} />;
-  if (name === "sparkles") return <Sparkles className={className} />;
-  return <Layers className={className} />;
-}
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:40px_40px]" />
 
-function Tag({ children }: { children: string }) {
-  return (
-    <span className="inline-flex items-center rounded-full border border-foreground/10 bg-background/20 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-foreground/75 transition-colors hover:bg-background/30 hover:text-foreground/90">
-      {children}
-    </span>
-  );
-}
+          {/* Spotlight Effect on Hover */}
+          <motion.div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background: `radial-gradient(circle at ${isHovered ? "50% 50%" : "100% 100%"}, ${project.color}25 0%, transparent 60%)`,
+            }}
+          />
 
-function PreviewFrame({ accentGlow }: { accentGlow: string }) {
-  return (
-    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-foreground/10 bg-background/30 backdrop-blur-sm shadow-inner">
-      {/* Accent wash */}
-      <div className={"absolute inset-0 " + accentGlow} />
+          {/* Browser Frame */}
+          <div className="absolute inset-4 sm:inset-6 rounded-xl border border-foreground/10 bg-background/30 backdrop-blur-sm overflow-hidden shadow-2xl shadow-black/20">
+            {/* Top Bar */}
+            <div className="h-8 sm:h-10 border-b border-foreground/10 bg-foreground/[0.02] flex items-center px-4 gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+              <span className="ml-4 text-[10px] text-foreground/30 font-mono hidden sm:block">
+                {project.title.toLowerCase()}.app
+              </span>
+            </div>
+            {/* Project Image */}
+            <div className="absolute inset-0 top-8 sm:top-10">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+            </div>
+          </div>
 
-      {/* Fake browser top bar */}
-      <div className="absolute left-0 right-0 top-0 h-10 border-b border-foreground/10 bg-background/30 backdrop-blur-md" />
-      <div className="absolute left-4 top-3.5 flex gap-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-foreground/20 shadow-sm" />
-        <span className="h-2.5 w-2.5 rounded-full bg-foreground/15 shadow-sm" />
-        <span className="h-2.5 w-2.5 rounded-full bg-foreground/10 shadow-sm" />
+          {/* Project Number */}
+          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+            <span
+              className="text-6xl sm:text-8xl font-bold opacity-10 transition-all duration-500 group-hover:opacity-20"
+              style={{ color: project.color }}
+            >
+              0{project.id}
+            </span>
+          </div>
+        </div>
+
+        {/* Project Info */}
+        <div className="w-full lg:w-2/5 space-y-6">
+          {/* Header */}
+          <div>
+            <motion.span
+              className="inline-block text-xs font-medium tracking-widest uppercase mb-3"
+              style={{ color: project.color }}
+            >
+              Proyecto 0{project.id}
+            </motion.span>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight group-hover:text-foreground/90 transition-colors">
+              {project.title}
+            </h3>
+            <p className="mt-2 text-lg text-foreground/50 font-medium">
+              {project.tagline}
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="text-base text-foreground/60 leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Stack */}
+          <div className="flex flex-wrap gap-2">
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1.5 text-xs font-medium rounded-full border border-foreground/10 bg-foreground/5 text-foreground/60 transition-all hover:bg-foreground/10 hover:text-foreground/80"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-4 pt-2">
+            {project.links.demo && (
+              <motion.a
+                href={project.links.demo}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300"
+                style={{
+                  backgroundColor: project.color,
+                  color: "#000",
+                }}
+              >
+                <span>Ver proyecto</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </motion.a>
+            )}
+            {project.links.github && (
+              <motion.a
+                href={project.links.github}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-foreground/10 text-foreground/60 hover:text-foreground hover:border-foreground/20 hover:bg-foreground/5 transition-all"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
+            )}
+            {!project.links.demo && !project.links.github && (
+              <span className="text-sm text-foreground/40 italic">
+                Próximamente
+              </span>
+            )}
+          </div>
+        </div>
       </div>
-
-      {/* Content grid - más elegante */}
-      <div className="absolute inset-0 top-10">
-        <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:28px_28px]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/0 via-background/10 to-background/60" />
-      </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -190,111 +226,65 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-svh overflow-visible pt-6 pb-10 flex items-start"
+      className="relative pt-16 pb-24 lg:pt-20 lg:pb-32 overflow-hidden"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-8 md:mb-10"
+          className="text-center mb-20 lg:mb-28"
         >
-          <p className="text-xs font-medium tracking-[0.16em] text-foreground/60">
-            PROYECTOS
-          </p>
-
-          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
-            Trabajo reciente.
+          <span className="inline-block text-xs font-medium tracking-[0.3em] text-foreground/40 uppercase mb-4">
+            Portafolio
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+            Trabajo
+            <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-red-400 bg-clip-text text-transparent">
+              {" "}destacado
+            </span>
           </h2>
-
-          <p className="mt-4 text-base md:text-lg text-foreground/60 leading-relaxed max-w-2xl">
-            Aplicaciones completas que demuestran mi enfoque en calidad, arquitectura limpia y experiencia de usuario.
+          <p className="mt-6 text-lg text-foreground/50 max-w-xl mx-auto">
+            Proyectos seleccionados que demuestran mi enfoque en calidad, diseño y experiencia de usuario.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8 items-stretch">
-          {projects.map((p, idx) => {
-            const accent = getAccentClasses(p.accent);
-
-            return (
-              <motion.article
-                key={p.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="group"
-              >
-                <div
-                  className={
-                    "relative h-full overflow-hidden rounded-3xl border border-foreground/10 bg-background/5 backdrop-blur-sm ring-1 ring-transparent transition-all duration-300 flex flex-col " +
-                    accent.ring +
-                    " hover:border-foreground/20 hover:bg-background/10 hover:shadow-xl hover:shadow-foreground/5"
-                  }
-                >
-                  <div className="relative aspect-[16/9] w-full p-4 flex-shrink-0">
-                    <PreviewFrame accentGlow={accent.glow} />
-
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/0 via-background/10 to-background/70" />
-
-                    <div className="absolute left-4 top-4 flex items-center gap-2.5">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-foreground/10 bg-background/40 backdrop-blur-md shadow-lg">
-                        <ProjectIcon name={p.icon} className="h-4.5 w-4.5 text-foreground/90" />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-semibold tracking-[0.2em] text-foreground/50">
-                          {String(idx + 1).padStart(2, "0")}
-                        </p>
-                        <p className="text-sm font-bold text-foreground">
-                          {p.title}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="absolute right-4 top-4 flex items-center gap-2">
-                      <ActionButton
-                        href={p.links.github}
-                        label="GitHub"
-                        icon={<Github className="h-3.5 w-3.5" />}
-                      />
-                      <ActionButton
-                        href={p.links.demo}
-                        label="Demo"
-                        icon={<ArrowUpRight className="h-3.5 w-3.5" />}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="p-5 pb-6 flex flex-col gap-3.5 flex-1">
-                    <p className="text-sm text-foreground/70 leading-relaxed font-medium">
-                      {p.description}
-                    </p>
-
-                    <div className="space-y-2 flex-1 pt-0.5">
-                      {p.highlights.map((h) => (
-                        <div key={h} className="flex items-start gap-2.5">
-                          <span className={"h-1.5 w-1.5 rounded-full flex-shrink-0 mt-1.5 " + accent.dot} />
-                          <p className="text-xs text-foreground/65 leading-relaxed">{h}</p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="pt-2">
-                      <div className="h-px w-full bg-gradient-to-r from-foreground/20 via-foreground/10 to-transparent" />
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 pt-0.5">
-                      {p.stack.slice(0, 5).map((t) => (
-                        <Tag key={t}>{t}</Tag>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-            );
-          })}
+        {/* Projects List */}
+        <div className="space-y-24 lg:space-y-40">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-24 lg:mt-32"
+        >
+          <p className="text-foreground/40 mb-6">
+            ¿Tienes un proyecto en mente?
+          </p>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-semibold text-lg transition-all hover:shadow-lg hover:shadow-foreground/20"
+          >
+            <span>Trabajemos juntos</span>
+            <ExternalLink className="w-5 h-5" />
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
